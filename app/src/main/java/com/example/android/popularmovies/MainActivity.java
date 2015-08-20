@@ -33,13 +33,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
-        /*ImageView imageView = (ImageView) findViewById(R.id.imageView);
-
-        Picasso.with(this)
-                .load("drawable/test")
-                .into(imageView);*/
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public int getCount() {
-            return mThumbIds.length;
+            return 6;
         }
 
         public Object getItem(int position) {
@@ -88,19 +84,34 @@ public class MainActivity extends AppCompatActivity {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+                imageView.setLayoutParams(new GridView.LayoutParams(100,100));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setPadding(8, 8, 8, 8);
+                imageView.setPadding(0, 0, 0, 0);
             } else {
                 imageView = (ImageView) convertView;
             }
 
-            imageView.setImageResource(mThumbIds[position]);
+
+            /*imageView.setImageResource(mThumbIds[position]);*/
+
+            Picasso.with(mContext)
+                    .load("http://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg")
+                    .into(imageView);
+
             return imageView;
+
+        /*ImageView imageView = (ImageView) findViewById(R.id.imageView);
+
+        Picasso.with(this)
+                .load("drawable/test")
+                .into(imageView);
+
+                */
         }
 
         // references to our images
-        private Integer[] mThumbIds = {
+        /*private Integer[] mThumbIds = {
+
                 R.drawable.sample_2, R.drawable.sample_3,
                 R.drawable.sample_4, R.drawable.sample_5,
                 R.drawable.sample_6, R.drawable.sample_7,
@@ -112,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.sample_2, R.drawable.sample_3,
                 R.drawable.sample_4, R.drawable.sample_5,
                 R.drawable.sample_6, R.drawable.sample_7
-        };
+        };*/
     }
 
 }
