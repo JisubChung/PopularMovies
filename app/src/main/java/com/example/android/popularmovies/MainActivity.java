@@ -2,6 +2,7 @@ package com.example.android.popularmovies;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import android.widget.AdapterView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public int getCount() {
-            return 6;
+            return 20;
         }
 
         public Object getItem(int position) {
@@ -82,23 +84,23 @@ public class MainActivity extends AppCompatActivity {
 
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView;
-            
-            if (convertView == null) {
-                // if it's not recycled, initialize some attributes
-                imageView = new ImageView(mContext);
-                /*imageView.setLayoutParams(new GridView.LayoutParams(250,400));*/  /*W / H*/
-                imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, GridView.LayoutParams.WRAP_CONTENT));
-                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            } else {
-                imageView = (ImageView) convertView;
-            }
+            ImageView posterImageView = new ImageView(mContext);
+
+            /*final Bitmap image = Picasso.with(mContext).load("http://image.tmdb.org/t/p/w185//5JU9ytZJyR3zmClGmVm9q4Geqbd.jpg").get();
+            int width = image.getWidth();
+            int height = image.getHeight();*/
 
             Picasso.with(mContext)
                     .load("http://image.tmdb.org/t/p/w185//5JU9ytZJyR3zmClGmVm9q4Geqbd.jpg")
-                    .into(imageView);
+                    /*.resize(120,0).centerInside()*/
+                    .into(posterImageView);
 
-            return imageView;
+
+                /*posterImageView.setLayoutParams(new GridView.LayoutParams(500,750));*/  /*W / H  ViewGroup.LayoutParams.WRAP_CONTENT*/
+            posterImageView.setAdjustViewBounds(true);
+            posterImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+            return posterImageView;
         }
     }
 }

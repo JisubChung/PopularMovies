@@ -2,15 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     android:id="@+id/gridview"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:columnWidth="0sp"
+    android:columnWidth="180dp"
     android:numColumns="auto_fit"
     android:verticalSpacing="0dp"
     android:horizontalSpacing="0dp"
-    android:stretchMode="columnWidth"
-    android:gravity="fill_horizontal"
-    >
+    android:stretchMode="spacingWidth"
+    android:gravity="center"  >
 
 
 
